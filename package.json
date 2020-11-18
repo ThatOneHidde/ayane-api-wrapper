@@ -1,0 +1,15 @@
+{
+  "name": "ayane-api",
+  "version": "1.0.0",
+  "description": "Simple Wrapper for the Ayane's api.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Hidde",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.0"
+  }
+}
