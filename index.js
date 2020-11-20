@@ -1,21 +1,30 @@
 const axios = require('axios').default;
-function ayaneMsg(options, message) {
+function ayaneEmbed(options, message) {
 
     guildSecret = options.guildSecret
     guildId = options.guildId
     channelId = options.channelId
+    embedTitle = options.embedTitle
+    embedColor = options.embedColor
+    image = options.embedImage
     message = message
 
-    const msg = axios.get('https://ayane.bitbiz.nl/api/msg?secret=' + guildSecret + '&guild=' + guildId + '&channel=' + channelId + '&msg=' + message + '')
-                .then(function (response) {
-                    console.log("Message Sent.")
-                    return response;
-                }).catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
+    axios.post('https://ayane.bitbiz.nl/api/msg', {
+            guild: guildId,
+            channel: channelId,
+            secret: guildSecret,
+            title: embedTitle,
+            color: embedColor,
+            content: message,
+            image: image
 
-    return msg
+            })
+            .then(function (response) {
+                console.log({ "status": response.status, "statusText": response.statusText });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 }
 
-module.exports.ayaneMsg = ayaneMsg;
+module.exports.ayaneEmbed = ayaneEmbed;
